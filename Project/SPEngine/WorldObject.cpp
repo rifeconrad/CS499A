@@ -2,7 +2,7 @@
 
 #include "TextureManager.h"
 
-WorldObject::WorldObject(const char * texture_path, int x, int y)
+WorldObject::WorldObject(const char * texture_path, int x, int y) : WorldObjectManager(this)
 {
 	this->texture = TextureManager::New(texture_path);
 	this->x = x;
@@ -12,7 +12,7 @@ WorldObject::WorldObject(const char * texture_path, int x, int y)
 WorldObject::~WorldObject()
 {
 }
-#include <iostream>
+
 void WorldObject::update()
 {
 	// perform actions

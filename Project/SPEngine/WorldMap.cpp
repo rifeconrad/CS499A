@@ -26,7 +26,7 @@ int lvl1[20][25] =
 	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 };
 
-WorldMap::WorldMap()
+WorldMap::WorldMap() : WorldMapManager(this)
 {
 	SDL_Texture* dirt = TextureManager::New("../../Sprites/Map/dirt.png");
 	SDL_Texture* grass = TextureManager::New("../../Sprites/Map/grass.png");

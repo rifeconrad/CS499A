@@ -1,8 +1,9 @@
 #pragma once
 
 #include "MainEngine.h"
+#include "WorldObjectManager.h"
 
-class WorldObject
+class WorldObject : public WorldObjectManager
 {
 public:
 	WorldObject(const char* texture_path, int x, int y);

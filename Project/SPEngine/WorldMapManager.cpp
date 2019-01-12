@@ -2,10 +2,15 @@
 
 #include <iostream>
 
-WorldMapManager::WorldMapManager() : Manager(this)
+WorldMapManager::WorldMapManager()
+{
+}
+
+WorldMapManager::WorldMapManager(WorldMapManager* map) : Manager(this)
 {
 	this->current_map = 0;
 	this->static_map = true;
+	this->maps.push_back(map);
 }
 
 
@@ -65,7 +70,7 @@ void WorldMapManager::chooseMap(int map)
 		std::cerr << "That map location does not exist.\n";
 }
 
-void WorldMapManager::addMap(WorldMap * map)
+void WorldMapManager::addMap(WorldMapManager * map)
 {
 	this->maps.push_back(map);
 }

@@ -1,6 +1,5 @@
 #pragma once
 
-#include "WorldMap.h"
 #include "Manager.h"
 
 #include <vector>
@@ -10,6 +9,7 @@ class WorldMapManager : public Manager
 {
 public:
 	WorldMapManager();
+	WorldMapManager(WorldMapManager* map);
 	~WorldMapManager();
 
 	virtual void update();
@@ -23,10 +23,10 @@ public:
 	virtual void nextMap();
 	virtual void previousMap();
 	virtual void chooseMap(int map);
-	virtual void addMap(WorldMap* map);
+	virtual void addMap(WorldMapManager* map);
 
 protected:
-	std::vector<WorldMap*> maps;
+	std::vector<WorldMapManager*> maps;
 
 	// the maps are ever-changing, so
 	// this will point to our current map

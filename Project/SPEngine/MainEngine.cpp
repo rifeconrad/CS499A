@@ -1,7 +1,7 @@
 #include "MainEngine.h"
 
-#include "WorldObjectManager.h"
-#include "WorldMapManager.h"
+#include "WorldObject.h"
+#include "WorldMap.h"
 
 #include <iostream>
 
@@ -48,13 +48,9 @@ void MainEngine::init(const char * title, int xpos, int ypos, int width, int hei
 	}
 
 	WorldMapManager* map_manager = new WorldMapManager();
-	WorldObjectManager* object_manager = new WorldObjectManager();
 
-	WorldObject* player = new WorldObject("../../Sprites/Knight/knight-frame1.png", 0, 0);
 	WorldMap* map = new WorldMap();
-
-	map_manager->addMap(map);
-	object_manager->addChild(player);
+	WorldObject* player = new WorldObject("../../Sprites/Knight/knight-frame1.png", 0, 0);
 }
 
 void MainEngine::handleEvents()

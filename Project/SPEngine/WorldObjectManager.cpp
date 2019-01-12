@@ -1,9 +1,12 @@
 #include "WorldObjectManager.h"
 
-
-
-WorldObjectManager::WorldObjectManager() : Manager(this)
+WorldObjectManager::WorldObjectManager()
 {
+}
+
+WorldObjectManager::WorldObjectManager(WorldObjectManager* obj) : Manager(this)
+{
+	this->children.push_back(obj);
 }
 
 WorldObjectManager::~WorldObjectManager()
@@ -12,7 +15,7 @@ WorldObjectManager::~WorldObjectManager()
 
 void WorldObjectManager::update()
 {
-	for (WorldObject* obj : children)
+	for (WorldObjectManager* obj : children)
 	{
 		obj->update();
 	}
@@ -20,13 +23,13 @@ void WorldObjectManager::update()
 
 void WorldObjectManager::render()
 {
-	for (WorldObject* obj : children)
+	for (WorldObjectManager* obj : children)
 	{
 		obj->render();
 	}
 }
 
-void WorldObjectManager::addChild(WorldObject* obj)
+void WorldObjectManager::addChild(WorldObjectManager* obj)
 {
 	this->children.push_back(obj);
 }

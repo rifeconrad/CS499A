@@ -1,6 +1,5 @@
 #pragma once
 
-#include "WorldObject.h"
 #include "Manager.h"
 
 #include <vector>
@@ -15,14 +14,15 @@ class WorldObjectManager : public Manager
 {
 public:
 	WorldObjectManager();
+	WorldObjectManager(WorldObjectManager* obj);
 	~WorldObjectManager();
 
 	virtual void update();
 	virtual void render();
 
-	virtual void addChild(WorldObject* obj);
+	virtual void addChild(WorldObjectManager* obj);
 
 protected:
-	std::vector<WorldObject*> children;
+	std::vector<WorldObjectManager*> children;
 };
 

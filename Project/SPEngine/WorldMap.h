@@ -1,10 +1,11 @@
 #pragma once
 
 #include "MainEngine.h"
+#include "WorldMapManager.h"
 
 #include <vector>
 
-class WorldMap
+class WorldMap : public WorldMapManager
 {
 public:
 	WorldMap();
@@ -24,7 +25,7 @@ protected:
 
 	std::vector<SDL_Texture*> textures;
 	std::vector<int**> levels;
-
+	
 	/*
 	SDL_Texture* dirt;
 	SDL_Texture* grass;
