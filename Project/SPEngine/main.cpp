@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
 	int frameTime;
 
 	MainEngine* engine = new MainEngine();
-	engine->init("SPEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
+	engine->init("SPEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 
 	while (engine->running())
 	{

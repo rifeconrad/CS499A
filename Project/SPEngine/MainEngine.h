@@ -3,7 +3,11 @@
 #include <SDL_image.h>
 
 #include "TextureManager.h"
+#include "WorldObject.h"
+#include "WorldMap.h"
 
+class WorldObject;
+class WorldMap;
 class MainEngine
 {
 public:
@@ -19,10 +23,12 @@ public:
 
 	bool running();
 
+	static SDL_Renderer* RENDERER;
+
 private:
 	bool engine_running;
 	SDL_Window* window;
-	SDL_Renderer* renderer;
-	SDL_Texture* playerTex;
+	WorldObject* player;
+	WorldMap* map;
 };
 

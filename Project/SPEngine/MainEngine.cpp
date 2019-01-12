@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+SDL_Renderer* MainEngine::RENDERER = nullptr;
+
 MainEngine::MainEngine()
 {
 }
@@ -27,10 +29,10 @@ void MainEngine::init(const char * title, int xpos, int ypos, int width, int hei
 			std::cout << "Window Created\n";
 		}
 
-		renderer = SDL_CreateRenderer(window, -1, 0);
-		if (renderer != 0)
+		RENDERER = SDL_CreateRenderer(window, -1, 0);
+		if (RENDERER != 0)
 		{
-			SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+			SDL_SetRenderDrawColor(RENDERER, 255, 255, 255, 255);
 			std::cout << "Renderer Created\n";
 		}
 
@@ -41,7 +43,8 @@ void MainEngine::init(const char * title, int xpos, int ypos, int width, int hei
 		this->engine_running = false;
 	}
 
-	playerTex = TextureManager::New("../../Sprites/Knight/knight-frame1.png", renderer);
+	player = new WorldObject("../../Sprites/Knight/knight-frame1.png", 0, 0);
+	map = new WorldMap();
 }
 
 void MainEngine::handleEvents()
@@ -61,24 +64,24 @@ void MainEngine::handleEvents()
 
 void MainEngine::update()
 {
+	player->update();
 }
 
 void MainEngine::render()
 {
-	SDL_RenderClear(renderer);
+	SDL_RenderClear(RENDERER);
 
 	// render here
-	// srcRect - part of rectangle to be drawn
-	// dstRect - where to be drawn on screen
-	SDL_RenderCopy(renderer, playerTex, NULL, NULL);
+	map->render();
+	player->render();
 
-	SDL_RenderPresent(renderer);
+	SDL_RenderPresent(RENDERER);
 }
 
 void MainEngine::clean()
 {
 	SDL_DestroyWindow(window);
-	SDL_DestroyRenderer(renderer);
+	SDL_DestroyRenderer(RENDERER);
 	SDL_Quit();
 
 	std::cout << "Game Cleaned\n";
