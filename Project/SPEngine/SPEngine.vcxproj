@@ -92,6 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\Conrad\Desktop\CS499A\SDL2_image\include;C:\Users\Conrad\Desktop\CS499A\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Users\Conrad\Desktop\CS499A\SDL2_image\lib\x64;C:\Users\Conrad\Desktop\CS499A\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -122,6 +123,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\Conrad\Desktop\CS499A\SDL2_image\include;C:\Users\Conrad\Desktop\CS499A\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -134,14 +136,20 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainEngine.cpp" />
+    <ClCompile Include="Manager.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="WorldObjectManager.cpp" />
     <ClCompile Include="WorldMap.cpp" />
+    <ClCompile Include="WorldMapManager.cpp" />
     <ClCompile Include="WorldObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainEngine.h" />
+    <ClInclude Include="Manager.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="WorldObjectManager.h" />
     <ClInclude Include="WorldMap.h" />
+    <ClInclude Include="WorldMapManager.h" />
     <ClInclude Include="WorldObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

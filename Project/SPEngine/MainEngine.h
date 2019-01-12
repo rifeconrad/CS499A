@@ -2,33 +2,30 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-#include "TextureManager.h"
-#include "WorldObject.h"
-#include "WorldMap.h"
+#include "Manager.h"
 
-class WorldObject;
-class WorldMap;
+class Manager;
 class MainEngine
 {
 public:
 	MainEngine();
 	~MainEngine();
 
-	void init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
+	virtual void init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
 
-	void handleEvents();
-	void update();
-	void render();
-	void clean();
+	virtual void handleEvents();
+	virtual void update();
+	virtual void render();
+	virtual void clean();
 
-	bool running();
+	virtual bool running();
 
 	static SDL_Renderer* RENDERER;
 
-private:
+protected:
 	bool engine_running;
 	SDL_Window* window;
-	WorldObject* player;
-	WorldMap* map;
+
+	Manager* manager;
 };
 

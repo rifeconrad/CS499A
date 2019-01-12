@@ -1,11 +1,15 @@
 #include "MainEngine.h"
 
+#include "WorldObjectManager.h"
+#include "WorldMapManager.h"
+
 #include <iostream>
 
 SDL_Renderer* MainEngine::RENDERER = nullptr;
 
 MainEngine::MainEngine()
 {
+	this->manager = new Manager();
 }
 
 MainEngine::~MainEngine()
@@ -43,8 +47,14 @@ void MainEngine::init(const char * title, int xpos, int ypos, int width, int hei
 		this->engine_running = false;
 	}
 
-	player = new WorldObject("../../Sprites/Knight/knight-frame1.png", 0, 0);
-	map = new WorldMap();
+	WorldMapManager* map_manager = new WorldMapManager();
+	WorldObjectManager* object_manager = new WorldObjectManager();
+
+	WorldObject* player = new WorldObject("../../Sprites/Knight/knight-frame1.png", 0, 0);
+	WorldMap* map = new WorldMap();
+
+	map_manager->addMap(map);
+	object_manager->addChild(player);
 }
 
 void MainEngine::handleEvents()
@@ -64,16 +74,14 @@ void MainEngine::handleEvents()
 
 void MainEngine::update()
 {
-	player->update();
+	this->manager->update();
 }
 
 void MainEngine::render()
 {
 	SDL_RenderClear(RENDERER);
 
-	// render here
-	map->render();
-	player->render();
+	this->manager->render();
 
 	SDL_RenderPresent(RENDERER);
 }

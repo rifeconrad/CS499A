@@ -12,7 +12,7 @@ WorldObject::WorldObject(const char * texture_path, int x, int y)
 WorldObject::~WorldObject()
 {
 }
-
+#include <iostream>
 void WorldObject::update()
 {
 	// perform actions
@@ -33,7 +33,6 @@ void WorldObject::update()
 void WorldObject::render()
 {
 	TextureManager::Draw(this->texture, this->src, this->dst);
-	//SDL_RenderCopy(MainEngine::RENDERER, this->texture, &this->srcRect, &this->dstRect);
 }
 
 void WorldObject::setSrc(int width, int height)

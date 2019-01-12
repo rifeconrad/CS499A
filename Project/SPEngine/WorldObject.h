@@ -14,7 +14,7 @@ public:
 	virtual void setSrc(int width, int height);
 	virtual void setDst(int width, int height);
 
-private:
+protected:
 	// world object world position
 	int x;
 	int y;
