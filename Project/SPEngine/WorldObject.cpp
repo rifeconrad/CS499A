@@ -15,19 +15,6 @@ WorldObject::~WorldObject()
 
 void WorldObject::update()
 {
-	// perform actions
-	x++;
-	y++;
-
-	src.h = 90;
-	src.w = 80;
-	src.x = 0;
-	src.y = 0;
-
-	dst.x = x;
-	dst.y = y;
-	dst.w = src.w * 2;
-	dst.h = src.h * 2;
 }
 
 void WorldObject::render()

@@ -25,12 +25,19 @@ public:
 	virtual void chooseMap(int map);
 	virtual void addMap(WorldMapManager* map);
 
-protected:
-	std::vector<WorldMapManager*> maps;
+	virtual int getCurrentMap() { return current_map; }
 
+protected:
+
+
+private:
 	// the maps are ever-changing, so
 	// this will point to our current map
-	int current_map;
+	static int current_map;
+
+	// holds all WorldMap objects (WorldMap
+	// inherits WorldMapManager)
+	static std::vector<WorldMapManager*> maps;
 
 	// there are two types of maps available:
 	// - either the map will move with the character

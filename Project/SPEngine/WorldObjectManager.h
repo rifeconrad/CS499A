@@ -23,6 +23,8 @@ public:
 	virtual void addChild(WorldObjectManager* obj);
 
 protected:
-	std::vector<WorldObjectManager*> children;
+
+private:
+	static std::vector<WorldObjectManager*> children;
 };
 

@@ -2,13 +2,15 @@
 
 #include <iostream>
 
+int WorldMapManager::current_map = 0;
+std::vector<WorldMapManager*> WorldMapManager::maps;
+
 WorldMapManager::WorldMapManager()
 {
 }
 
 WorldMapManager::WorldMapManager(WorldMapManager* map) : Manager(this)
 {
-	this->current_map = 0;
 	this->static_map = true;
 	this->maps.push_back(map);
 }
@@ -32,6 +34,7 @@ void WorldMapManager::update()
 
 void WorldMapManager::render()
 {
+	std::cerr << "Verify current map: " << current_map << "\n";
 	if (!this->maps.empty())
 		this->maps[this->current_map]->render();
 }

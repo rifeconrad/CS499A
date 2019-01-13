@@ -1,5 +1,7 @@
 #include "WorldObjectManager.h"
 
+std::vector<WorldObjectManager*> WorldObjectManager::children;
+
 WorldObjectManager::WorldObjectManager()
 {
 }

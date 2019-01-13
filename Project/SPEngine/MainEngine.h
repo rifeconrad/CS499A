@@ -9,6 +9,7 @@ class MainEngine
 {
 public:
 	MainEngine();
+	MainEngine(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
 	~MainEngine();
 
 	virtual void init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
@@ -17,6 +18,8 @@ public:
 	virtual void update();
 	virtual void render();
 	virtual void clean();
+
+	virtual void setUp();
 
 	virtual bool running();
 
