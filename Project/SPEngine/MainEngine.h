@@ -2,9 +2,11 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-#include "Manager.h"
+#include "WorldMapManager.h"
+#include "WorldObjectManager.h"
 
 class Manager;
+class WorldMap;
 class MainEngine
 {
 public:
@@ -29,6 +31,7 @@ protected:
 	bool engine_running;
 	SDL_Window* window;
 
-	Manager* manager;
+	WorldMapManager* map_manager;
+	WorldObjectManager* object_manager;
 };
 

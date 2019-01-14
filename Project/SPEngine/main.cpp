@@ -11,8 +11,8 @@ int main(int argc, char* argv[])
 	Uint32 frameStart;
 	int frameTime;
 
+	// creates, initializes, and begins running the engine
 	MainEngine* engine = new MainEngine("SPEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
-	//engine->init();
 
 	while (engine->running())
 	{

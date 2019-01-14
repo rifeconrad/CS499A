@@ -62,7 +62,8 @@ MainEngine::MainEngine()
 MainEngine::MainEngine(const char * title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
 	this->init(title, xpos, ypos, width, height, fullscreen);
-	this->manager = new Manager();
+	this->map_manager = new WorldMapManager();
+	this->object_manager = new WorldObjectManager();
 	this->setUp();
 }
 
@@ -82,28 +83,36 @@ void MainEngine::init(const char * title, int xpos, int ypos, int width, int hei
 		flags = SDL_WINDOW_FULLSCREEN;
 	}
 
-	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
+	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 	{
+		this->engine_running = false;
+		return;
+	}
 		this->window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
 
-		if (window != 0)
+		if (this->window != 0)
+			std::cerr << "Window Created\n";
+		else
 		{
-			std::cout << "Window Created\n";
+			std::cerr << "Window was unsuccessfully created... Ending program.\n";
+			this->engine_running = false;
+			return;
 		}
 
 		RENDERER = SDL_CreateRenderer(window, -1, 0);
 		if (RENDERER != 0)
 		{
 			SDL_SetRenderDrawColor(RENDERER, 255, 255, 255, 255);
-			std::cout << "Renderer Created\n";
+			std::cerr << "Renderer Created\n";
+		}
+		else
+		{
+			std::cerr << "Renderer was unsuccessfully created... Ending program.\n";
+			this->engine_running = false;
+			return;
 		}
 
 		this->engine_running = true;
-	}
-	else
-	{
-		this->engine_running = false;
-	}
 }
 
 /***********************************************
@@ -112,26 +121,6 @@ void MainEngine::init(const char * title, int xpos, int ypos, int width, int hei
 ***********************************************/
 void MainEngine::setUp()
 {
-	WorldMap* map = new WorldMap(lvl1, 1);
-
-	SDL_Texture* dirt = TextureManager::New("../../Sprites/Map/dirt.png");
-	SDL_Texture* grass = TextureManager::New("../../Sprites/Map/grass.png");
-	SDL_Texture* water = TextureManager::New("../../Sprites/Map/water.png");
-
-	map->addTexture(dirt);
-	map->addTexture(grass);
-	map->addTexture(water);
-
-	WorldMap* map2 = new WorldMap(lvl2, 2);
-
-	map2->addTexture(dirt);
-	map2->addTexture(grass);
-	map2->addTexture(water);
-	
-	std::cerr << "Current MapOne: " << map->getCurrentMap() << "\n";
-	std::cerr << "Current MapTwo: " << map2->getCurrentMap() << "\n";
-
-	WorldObject* player = new WorldObject("../../Sprites/Knight/knight-frame1.png", 0, 0);
 }
 
 /***********************************************
@@ -154,14 +143,16 @@ void MainEngine::handleEvents()
 
 void MainEngine::update()
 {
-	this->manager->update();
+	this->map_manager->update();
+	this->object_manager->update();
 }
 
 void MainEngine::render()
 {
 	SDL_RenderClear(RENDERER);
 
-	this->manager->render();
+	this->map_manager->render();
+	this->object_manager->render();
 
 	SDL_RenderPresent(RENDERER);
 }
@@ -172,7 +163,7 @@ void MainEngine::clean()
 	SDL_DestroyRenderer(RENDERER);
 	SDL_Quit();
 
-	std::cout << "Game Cleaned\n";
+	std::cerr << "Game Cleaned\n";
 }
 
 bool MainEngine::running()

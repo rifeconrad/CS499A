@@ -6,9 +6,8 @@ WorldMap::WorldMap()
 {
 }
 #include <iostream>
-WorldMap::WorldMap(std::vector<std::vector<int>> map, int map_id) : WorldMapManager(this)
+WorldMap::WorldMap(std::vector<std::vector<int>> map) : WorldMapManager(this)
 {
-	this->map_id = map_id;
 	std::cerr << "Added map\n";
 	this->map = map;
 
@@ -37,10 +36,9 @@ void WorldMap::loadMap(std::vector<std::vector<int> > map)
 void WorldMap::update()
 {
 }
-#include <iostream>
+
 void WorldMap::render()
 {
-	//std::cerr << "Verify map id: " << this->map_id << "\n";
 	int type = 0;
 	for (int row = 0; row < map.size(); row++)
 	{
@@ -55,8 +53,10 @@ void WorldMap::render()
 	}
 }
 
-void WorldMap::addTexture(SDL_Texture* texture)
+void WorldMap::addTexture(const char* filename)
 {
-	this->textures.push_back(texture);
+	std::pair<SDL_Texture*, SDL_Surface*> img = TextureManager::New(filename);
+	this->textures.push_back(img.first);
+	this->surfaces.push_back(img.second);
 }
 

@@ -6,7 +6,7 @@ WorldObjectManager::WorldObjectManager()
 {
 }
 
-WorldObjectManager::WorldObjectManager(WorldObjectManager* obj) : Manager(this)
+WorldObjectManager::WorldObjectManager(WorldObjectManager* obj)
 {
 	this->children.push_back(obj);
 }

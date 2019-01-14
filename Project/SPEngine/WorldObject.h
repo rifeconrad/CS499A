@@ -6,7 +6,7 @@
 class WorldObject : public WorldObjectManager
 {
 public:
-	WorldObject(const char* texture_path, int x, int y);
+	WorldObject(const char* texture_path, int x, int y, int pixel_height, int pixel_width);
 	~WorldObject();
 
 	virtual void update();
@@ -22,6 +22,7 @@ protected:
 
 	// texture and renderer for world object
 	SDL_Texture* texture;
+	SDL_Surface* surface;
 
 	SDL_Rect src; // the part of the texture to be drawn
 	SDL_Rect dst; // the part of the texture to be drawn on the screen

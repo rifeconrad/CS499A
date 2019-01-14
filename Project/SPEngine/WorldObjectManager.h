@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Manager.h"
-
 #include <vector>
 
 /*********************************
@@ -10,7 +8,7 @@
 * objects (children).
 *********************************/
 class WorldObject;
-class WorldObjectManager : public Manager
+class WorldObjectManager
 {
 public:
 	WorldObjectManager();

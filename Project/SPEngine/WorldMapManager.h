@@ -1,11 +1,9 @@
 #pragma once
 
-#include "Manager.h"
-
 #include <vector>
 
 class WorldMap;
-class WorldMapManager : public Manager
+class WorldMapManager
 {
 public:
 	WorldMapManager();
@@ -25,15 +23,16 @@ public:
 	virtual void chooseMap(int map);
 	virtual void addMap(WorldMapManager* map);
 
-	virtual int getCurrentMap() { return current_map; }
+	virtual int getNumberOfMaps();
+
+	virtual int getCurrentMap() { return current_map_to_manage; }
 
 protected:
-
 
 private:
 	// the maps are ever-changing, so
 	// this will point to our current map
-	static int current_map;
+	static int current_map_to_manage;
 
 	// holds all WorldMap objects (WorldMap
 	// inherits WorldMapManager)
