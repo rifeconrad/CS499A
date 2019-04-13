@@ -1,0 +1,8 @@
+Humans: 200
+RRRRRRRRRRRRRRRRRR
+R................R
+R......R.........R
+R.....RRR..@.....R
+R......R.........R
+R................R
+RRRRRRRRRRRRRRRRRR
