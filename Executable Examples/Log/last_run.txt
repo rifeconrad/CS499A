@@ -1,0 +1,23 @@
+--- Particle System Executable Log ---
+Initializing main loop instance
+Preparing for program initialization
+Initializing systems
+Initializing shader files
+Setting up FPS limiter
+Beginning game loop
+Scrolling view in
+Scrolling view in
+Scrolling view in
+Scrolling view in
+Scrolling view in
+Scrolling view in
+Scrolling view in
+Scrolling view in
+Scrolling view in
+Scrolling view out
+Scrolling view out
+Scrolling view out
+Scrolling view out
+Scrolling view out
+Scrolling view out
+Scrolling view out
